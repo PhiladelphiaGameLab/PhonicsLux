@@ -30,9 +30,9 @@ if($LF->is_avail("id")){
 	$documents = $collection->aggregateCursor($query);
 	$OUTPUT->success("Found Aggregate Values", $documents);
 }
-if(!$LF->is_avail("noSub") || $LF->fetch_avail("noSub")){
+/*if(!$LF->is_avail("noSub") || $LF->fetch_avail("noSub")){
 	$db->subscribe($query, $AUTH);
-}
+}*/
 die();
 
 ?>

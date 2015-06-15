@@ -12,12 +12,12 @@ $LF = new LuxFunctions();
 $AUTH = new Auth();
 
 $wishlistName = $LF->is_avail("wishlistName")? $LF->fetch_avail("wishlistName") : "wishlist";
-$results = $collection->find(
+$results = $collection->findOne(
     array(
 	"userId"=> $AUTH->getClientId(),
 	) 
 );
 
-$OUTPUT->success("Successfully Updated Card", $results);
+$OUTPUT->success("Found User's Wishlist", $results);
 ?>
 

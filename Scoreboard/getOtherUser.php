@@ -12,7 +12,7 @@ $LF = new LuxFunctions();
 $AUTH = new Auth();
 
 $query = array(
-    "userID" => $AUTH->getClientId()
+    "user_id" => new MongoId($LF->fetch_avail("userID"))
 );
 
 $results = $collection->findOne($query);

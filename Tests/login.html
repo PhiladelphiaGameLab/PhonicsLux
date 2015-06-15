@@ -1,0 +1,75 @@
+<html>
+<head>
+<link rel="stylesheet" href="./dist/css/bootstrap.css">
+<!--<script>
+function loadURL(){
+var xmlhttp;
+if (window.XMLHttpRequest){
+  xmlhttp=new XMLHttpRequest();
+}
+xmlhttp.onreadystatechange=function(){
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+    document.getElementById("button").href=xmlhttp.responseText;
+    }
+xmlhttp.open("GET","..Lux/Auth/google.php?href=Phonics/dash.html",true);
+xmlhttp.send();
+}
+window.onload=loadURL();
+</script>--!>
+<script>
+function Ajax(url, data, callback){
+        var http = new XMLHttpRequest();
+        http.onreadystatechange=function(){
+                if(http.readyState==4 && http.status==200){
+                        callback(http.responseText);
+                }
+        }
+        urlBase = "http://demo.philadelphiagamelab.org/Lux/";
+        http.open("POST", urlBase + url, true);
+        http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        http.send(JSON.stringify(data));
+}
+
+
+Ajax("Auth/google.php?href=Phonics/dash.html", {}
+                        ,function(data){
+                                document.getElementById("LogIn").href=data.trim();
+                        });
+</script>
+      <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>Phonics - Login</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="dist/css/animate.min.css">
+  <link rel="stylesheet" href="dist/css/tiempo.css">
+  <link rel="alternate stylesheet" href="dist/css/light.css" name="light">
+  <link rel="stylesheet" href="dist/css/dark.css" name="dark">
+  <link rel="stylesheet" href="dist/css/style.css">
+  <link rel="shortcut icon" href="images/tiempo-favicon.png">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="dist/js/jquery.mb.YTPlayer.js"></script>
+  <script src="dist/js/tiempo.js"></script>
+</head>
+<style>
+</style>
+<body>
+<div class="container">
+	<div class="backdrop" align="center">
+	<div class="page-header" align="center">
+	<h1>Phonics</h1>
+	</div>
+	<a class="btn btn-lg btn-warning" id="LogIn" style="padding: 10% 5%">
+	Login With Google
+	</a>
+	</div>
+</div>
+<div id="htmlTest">
+
+
+</div>
+</body>
+</html>

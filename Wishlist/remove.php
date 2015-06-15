@@ -17,10 +17,13 @@ $results = $collection->update(
 	"userId"=> $AUTH->getClientId(),
 	),  
     array('$pull'=>array(
-		$wishlistName => $LF->fetch_avail("movieId");
+		$wishlistName => $LF->fetch_avail("itemId")
 	))
 );
-
-$OUTPUT->success("Successfully Updated Card", $results);
+if($results["ok"] == 1 && $results["err"] == null){
+	$OUTPUT->success("Successfully Updated Wishlist");
+}else{
+	$OUTPUT->error("Failed to Update Wishlist", $results["error"]);
+}
 ?>
 

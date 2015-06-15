@@ -15,9 +15,9 @@ if($LF->is_avail("id")){
         $document = $collection->findOne($query);
         $OUTPUT->success("Found User", $document);
 }else if($LF->is_avail("query")){
-        $query = is_array($LF->fetch_avail("query"))? $LF->fetch_avail("query") : array($LF->fetch_avail("query"));
-        $documents = $collection->find($query);
-        $OUTPUT->success("Found Users", $documents);
+	$query = is_array($LF->fetch_avail("query"))? $LF->fetch_avail("query") : array($LF->fetch_avail("query"));
+	$documents = $collection->find($query);
+	$OUTPUT->success("Found Documents", iterator_to_array(($documents)));
 }else if($LF->is_avail("distinct")){
         $documents = $collection->distinct($LF->fetch_avail("distinct"));
         $OUTPUT->success("Found Distinct ".$LF->fetch_avail("distinct")."s", $documents);

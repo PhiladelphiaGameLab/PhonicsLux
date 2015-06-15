@@ -12,12 +12,7 @@ if(isset($_GET["error"]) && $_GET["error"] == "access_denied"){
 if(!isset($_GET["state"])){
 	session_start();
 }
-
-//if(!isset($_SESSION["redir"])){
-//	$_SESSION["redir"] = $_GET["href"];
-//}
-//var_dump($_SESSION["redir"]);
-$OAuth = new OAuthC("google");
+$OAuth = new OAuthC("custom");
 
 //$OAuth->check($_SESSION["redir"]);
 

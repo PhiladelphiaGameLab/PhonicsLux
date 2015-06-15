@@ -24,7 +24,9 @@ class LuxFunctions{
 		return array_search($documentGroup, $clientGroups);
 		// check that the group permission includes "copyable"
 	}
-
+	function getArray(){
+		return $this->parameters;
+	}
 	function setArray(){
 		$decoded = json_decode(file_get_contents('php://input'), true);
 		if(is_array($decoded)){
@@ -45,6 +47,26 @@ class LuxFunctions{
 		}
 		if(isset($_SESSION) && is_array($_SESSION)){
 			foreach($_SESSION as $key => $value){
+				$this->parameters[$key] = $value;
+			}
+		}
+		if(isset($_FILES) && is_array($_FILES)){
+			foreach($_FILES as $key => $value){
+				$this->parameters[$key] = $value;
+			}
+		}
+		if(isset($_REQUEST) && is_array($_REQUEST)){
+			foreach($_REQUEST as $key => $value){
+				$this->parameters[$key] = $value;
+			}
+		}
+		if(isset($_ENV) && is_array($_ENV)){
+			foreach($_ENV as $key => $value){
+				$this->parameters[$key] = $value;
+			}
+		}
+		if(isset($_COOKIE) && is_array($_COOKIE)){
+			foreach($_COOKIE as $key => $value){
 				$this->parameters[$key] = $value;
 			}
 		}
@@ -80,6 +102,15 @@ class LuxFunctions{
 			}
 		}
 		return $this->parameters[$var];
+	}
+	
+	function get_oldSession($id){
+		if(session_id() == $id){	
+			session_destroy();
+			session_id($id);
+			session_start();
+			$this->setArray();
+		}
 	}
 
 	function is_get($var, $die=true){

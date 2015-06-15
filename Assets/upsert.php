@@ -46,7 +46,7 @@ if(isset($update) && isset($query)){
 	$documents = $collection->find($query);
 	$results = $collection->remove($query);
 	$removed = true;
-	$OUTPUT->success("Successfully Removed Document", $results);
+	$OUTPUT->success("Successfully Removed Document", $results, $documents);
 }else if(isset($update) && !isset($query)){
 	// insert
 	$update["timestamp"] = microtime();
